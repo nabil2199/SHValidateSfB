@@ -1,3 +1,24 @@
+<#
+Surface Hub SfB account validator
+Verion 0.1
+Nabil LAKHNACHFI
+OCWS
+#>
+
+Write-Host -ForegroundColor "Red" -backgroundcolor "yellow" -NoNewline "OCWS"; Write-Host  " Surface Hub SfB account validator"
+Write-Host  "What account will be used by the Surface Hub"
+Write-Host  "Acceptable input formats " -NoNewline;
+Write-Host -ForegroundColor Cyan "SIP address " -NoNewline;
+Write-Host  " , " -NoNewline;
+Write-Host -ForegroundColor Cyan  "user principal name (UPN)" -NoNewline;
+Write-Host  " , " -NoNewline;
+Write-Host -ForegroundColor Cyan "domain\logon" -NoNewline
+Write-Host  " , " -NoNewline;
+Write-Host -ForegroundColor Cyan "Display name" -NoNewline;
+$strLyncIdentity = Read-Host "?"
+
+Write-Host $strLyncIdentity
+
 function Validate()
 {
     Param(
@@ -29,15 +50,6 @@ function Validate()
 }
 
 ## SfB ##
-$strLyncIdentity = $null
-if ($fSfbIsOnline)
-{
-    $strLyncIdentity = $strUpn
-}
-else
-{
-    $strLyncIdentity = $strAlias
-}
 
 $lyncAccount = $null
 try {
