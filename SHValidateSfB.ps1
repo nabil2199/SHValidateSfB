@@ -19,6 +19,10 @@ $strLyncIdentity = Read-Host "?"
 
 Write-Host $strLyncIdentity
 
+$Global:iTotalFailures = 0
+$global:iTotalWarnings = 0
+$Global:iTotalPasses = 0
+
 function Validate()
 {
     Param(
