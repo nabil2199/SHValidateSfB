@@ -65,3 +65,16 @@ if ($lyncAccount)
     Validate -Test "The meeting room has a SIP address" -Condition (![System.String]::IsNullOrEmpty($lyncAccount.SipAddress)) -FailureMsg "SfB Enabled - there is no SIP Address - the device account cannot be used to sign into Skype for Business."
 }
 ## End SFB ##
+
+
+## Summary ##
+
+$global:iTotalTests = ($global:iTotalFailures + $global:iTotalPasses + $global:iTotalWarnings)
+
+Write-Host -NoNewline $global:iTotalTests "tests executed: "
+Write-Host -NoNewline -ForegroundColor Red $Global:iTotalFailures "failures "
+Write-Host -NoNewline -ForegroundColor Yellow $Global:iTotalWarnings "warnings "
+Write-Host -ForegroundColor Green $Global:iTotalPasses "passes "
+
+## End Summary ##
+
