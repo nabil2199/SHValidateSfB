@@ -21,7 +21,7 @@ $strLyncIdentity = Read-Host "?"
 $Global:iFileText=$null
 #file path
 $date=(Get-Date).ToString('yyyy-MM-dd')
-$logFilePath=$PSScriptRoot+"\LogSHValidateSfBfr"+$date+".txt"
+$logFilePath=$PSScriptRoot+"\LogSHValidateSfBfr-"+$date+".txt"
 
 $Global:iTotalFailures = 0
 $Global:iTotalWarnings = 0
