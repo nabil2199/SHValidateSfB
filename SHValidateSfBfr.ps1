@@ -17,10 +17,10 @@ Write-Host  " , " -NoNewline;
 Write-Host -ForegroundColor Cyan "Display name" -NoNewline;
 $strLyncIdentity = Read-Host "?"
 
-Write-Host $strLyncIdentity
+#Write-Host $strLyncIdentity
 
 $Global:iTotalFailures = 0
-$global:iTotalWarnings = 0
+$Global:iTotalWarnings = 0
 $Global:iTotalPasses = 0
 
 function Validate()
