@@ -18,6 +18,8 @@ Write-Host -ForegroundColor Cyan "Display name" -NoNewline;
 $strLyncIdentity = Read-Host "?"
 
 #Write-Host $strLyncIdentity
+$Global:iFileText=$null
+$logFilePath=
 
 $Global:iTotalFailures = 0
 $Global:iTotalWarnings = 0
@@ -36,6 +38,7 @@ function Validate()
     if ($Condition)
     {
         Write-Host -ForegroundColor Green "Reussi"
+        Out-file -filePath $logFilePath -append "Reussi"
         $global:iTotalPasses++
     }
     else
@@ -43,11 +46,13 @@ function Validate()
         if ($WarningOnly)
         {
             Write-Host -ForegroundColor Yellow ("Avertissement: "+$FailureMsg)
+            Out-file -filePath $logFilePath -append ("Avertissement: "+$FailureMsg)
             $global:iTotalWarnings++
         }
         else
         {
             Write-Host -ForegroundColor Red ("Echec: "+$FailureMsg)
+            Out-file -filePath $logFilePath -append ("Echec: "+$FailureMsg)
             $global:iTotalFailures++
         }
     }
@@ -76,8 +81,12 @@ if ($lyncAccount)
 $global:iTotalTests = ($global:iTotalFailures + $global:iTotalPasses + $global:iTotalWarnings)
 
 Write-Host -NoNewline $global:iTotalTests "tests realises: "
+Out-file -filePath $logFilePath -append ($global:iTotalTests "tests realises: ")
 Write-Host -NoNewline -ForegroundColor Red $Global:iTotalFailures "echecs "
+Out-file -filePath $logFilePath -append ($Global:iTotalFailures "echecs ")
 Write-Host -NoNewline -ForegroundColor Yellow $Global:iTotalWarnings "avertissements "
+Out-file -filePath $logFilePath -append ($Global:iTotalWarnings "avertissements ")
 Write-Host -ForegroundColor Green $Global:iTotalPasses "reussis "
+Out-file -filePath $logFilePath -append ($Global:iTotalPasses "reussis ")
 
 ## End Summary ##
