@@ -20,7 +20,7 @@ $strLyncIdentity = Read-Host "?"
 #Write-Host $strLyncIdentity
 $Global:iFileText=$null
 #file path
-$logFilePath=
+$logFilePath=$PSScriptRoot+"\LogSHValidateSfBfr.txt"
 
 $Global:iTotalFailures = 0
 $Global:iTotalWarnings = 0
